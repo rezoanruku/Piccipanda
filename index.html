@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+  .banner {
+    background: #blue;
+    color: green;
+    font-weight: bold;
+    padding: 1px 0;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+  .banner p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: slideText 18s linear infinite;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  @keyframes slideText {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+
+<div class="banner">
+  <p>
+    ওয়েবসাইটের কাজ এখনো চলমান🛠নতুন নতুন ফিচার এড করা হবে সময়ের সাথে সাথে ⏳
+  </p>
+</div>
+  
+  <title>পিচ্চি Panda</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: sans-serif;
+      background: #fff;
+      padding-bottom: 60px;
+    }
+
+    .topbar {
+      background: #f10075;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 5px;
+    }
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 20%;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+    .logo-text {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .search {
+      margin-left: auto;
+    }
+    .search input {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 20px;
+      width: 140px;
+    }
+
+    .slider {
+      width: 100%;
+      height: 103px;
+      overflow: hidden;
+      border-radius: 10px;
+      margin: 5px auto;
+      box-shadow: 0 0 8px #ccc;
+    }
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slide 9s infinite;
+    }
+    .slides img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+    @keyframes slide {
+      0% {margin-left: 0%;}
+      33% {margin-left: -100%;}
+      66% {margin-left: -200%;}
+      100% {margin-left: 0%;}
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      width: 90%;
+      max-width: 300px;
+      text-align: center;
+      border-radius: 15px;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .popup img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .popup .order-now {
+      display: inline-block;
+      background: #f10075;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+    }
+
+    .panda-popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 100px;
+      animation: slideDown 1.5s ease forwards;
+    }
+    .panda-popup img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(0); }
+      80% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(200px); }
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      margin-top: 10px;
+    }
+    .discount-btn, .delivery-btn {
+      background: #fff3f7;
+      color: #f10075;
+      font-weight: bold;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 0 10px #ffb2d0;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      animation: bounce 1.5s infinite ease-in-out;
+    }
+    .discount-btn img,
+    .delivery-btn img {
+      width: 22px;
+      height: 22px;
+      margin-right: 8px;
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+
+    .category-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      scroll-behavior: smooth;
+      padding: 10px 15px;
+    }
+    .category-scroll::-webkit-scrollbar { display: none; }
+
+    .cat-btn {
+      flex: 0 0 auto;
+      background: linear-gradient(135deg, #ff99c5, #ff4b99);
+
+color: white;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 25px;
+      white-space: nowrap;
+      font-size: 14px;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 4px 8px rgba(255, 0, 119, 0.2);
+      text-decoration: none;
+    }
+    .cat-btn:hover {
+      background: linear-gradient(135deg, yellow, #ff99c5);
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ff007f;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 0;
+      z-index: 999;
+    }
+    .bottom-nav a {
+      color: white;
+      text-align: center;
+      font-size: 12px;
+      text-decoration: none;
+      flex: 1;
+    }
+    .bottom-nav i {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    /* Pop-up Boxes */
+    #deliveryPopup, #discountPopup {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 20px;
+      background: #f10075;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      max-width: 280px;
+      line-height: 1.4;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 9999;
+      animation: fadeSlide 0.6s ease;
+    }
+
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2-column layout */
+      gap: 15px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-card h3 {
+      font-size: 14px;
+      margin: 10px 0 5px;
+    }
+
+    .product-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .product-card del {
+      color: gray;
+      font-size: 12px;
+    }
+
+    .price {
+      color: #e91e63;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    .btn-group {
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-group button {
+      padding: 6px 10px;
+      font-size: 12px;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: #f5f5f5;
+    }
+
+    footer {
+      background-color: #0f172a;
+      color: #fff;
+      padding: 30px 20px;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .footer-top img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+
+    .footer-top .brand-name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .social-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .social-links a i {
+      margin-right: 6px;
+    }
+
+    .social-links a:hover {
+      color: #38bdf8;
+      text-decoration: underline;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-column {
+      flex: 1 1 200px;
+    }
+
+    .footer-column h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #bbb;
+    }
+
+    .footer-bottom {
+      margin-top: 30px;
+      font-size: 13px;
+      color: white;
+    }
+
+    @media (max-width: 70px) {
+      .footer-top,
+      .social-links,
+      .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .social-links a {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- অর্ডার ফর্ম ও ওভারলে -->
+<div id="overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;justify-content:center;align-items:center;">
+  <div id="orderPopup" style="background:#fff; padding:20px; border-radius:12px; max-width:350px; width:90%; position:relative;">
+    <h3 style="color:#f10075; text-align:center;">অর্ডার ফর্ম</h3>
+    <span style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; font-size:22px;" onclick="closeForm()">×</span>
+    <form id="orderForm">
+      <label>নাম</label><br>
+      <input type="text" id="customerName" name="name" required style="width:100%;padding:8px;margin-bottom:10px;"><br>
+      
+      <label>মোবাইল নম্বর</label><br>
+      <input type="tel" id="customerNumber" name="number" required pattern="[0-9]{11}" placeholder="০১৭XXXXXXXX" style="width:100%;padding:8px;margin-bottom:10px;"><br>
+      
+      <label>প্রোডাক্ট</label><br>
+      <input type="text" id="productName" name="product" readonly style="width:100%;padding:8px;margin-bottom:10px; background:#eee;"><br>
+      
+      <label>মূল্য</label><br>
+      <input type="text" id="productPrice" name="price" readonly style="width:100%;padding:8px;margin-bottom:10px; background:#eee;"><br>
+      
+      <label>ডেলিভারি ঠিকানা</label><br>
+      <textarea id="deliveryAddress" name="address" rows="2" required style="width:100%;padding:8px;margin-bottom:10px;"></textarea><br>
+      
+      <label>ডেলিভারি চার্জ:</label><br>
+      <label><input type="radio" name="deliveryCharge" value="সিলেটের ভিতরে (৮০৳)" required> সিলেটের ভিতরে (৮০৳)</label><br>
+      <label><input type="radio" name="deliveryCharge" value="সিলেটের বাইরে (১২০৳)"> সিলেটের বাইরে (১২০৳)</label><br><br>
+      
+      <button type="submit" style="background:#f10075; color:#fff; padding:10px 0; width:100%; border:none; border-radius:8px; font-weight:bold; font-size:16px; cursor:pointer;">অর্ডার জমা দিন</button>
+    </form>
+  </div>
+</div>
+
+<!-- অর্ডার প্রসেসিং পপআপ -->
+<div id="orderProcessingPopup" style="display:none;position:fixed;top:20px;right:20px;background:#f10075;color:#fff;padding:15px 20px;border-radius:12px;box-shadow:0 0 15px #f10075; z-index:10000;">
+  অর্ডার প্রক্রিয়াধীন...
+</div>
+  <!-- Panda Pop-up -->
+  <div class="panda-popup" id="pandaPopup">
+    <img src="https://i.postimg.cc/mhxhCpGh/Messenger-creation-2168-F99-E-6-FC2-431-B-AAF7-DBD0-E4-B7-A6-AE.gif" alt="Dancing Panda" onclick="hidePanda()" />
+  </div>
+
+  <!-- Header -->
+  <div class="topbar">
+    <img class="logo-img" src="https://i.postimg.cc/150LzhgT/IMG-20250801-122934-982.jpg">
+    <div class="logo-text">পিচ্চি Panda</div>
+    <div class="search"><input type="text" placeholder="Search"></div>
+  </div>
+
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slides">
+      <img src="https://i.postimg.cc/gJ6bGg62/Screenshot-20250801-140028-1.png">
+      <img src="https://i.postimg.cc/nzfggHdh/PICCI-PANDA-20250803-145726-0000.png">
+ 
+    <img src="https://i.postimg.cc/25Ftzg0G/Screenshot-20250801-140039-1.png">
+      
+    </div>
+  </div>
+
+  <!-- Button Row -->
+  <div class="button-row">
+    <button class="discount-btn">
+      <img src="https://i.postimg.cc/ZRkGGZcv/bag-1.png"> Discount Offer
+    </button>
+    <button class="delivery-btn">
+      <img src="https://i.postimg.cc/WbQhfqZ2/free-delivery.png"> Home Delivery
+    </button>
+  </div>
+
+  <!-- Pop-ups -->
+  <div id="deliveryPopup">
+    🚚 সারা দেশে আমরা ক্যাশ অন ডেলিভারিতে প্রডাক্ট দিয়ে থাকি।<br>
+    🛵 সিলেট: ৮০৳, বাইরে: ১২০৳<br>
+    📦 ঢাকার চার্জ কমানোর কাজ চলছে।
+  </div>
+
+  <div id="discountPopup">
+    🔔 <b>প্রতি শুক্রবার সন্ধ্যায়</b><br>
+    🎁 <b>সকল অফার পাবেন</b><br>
+    🐼 <b>তাই চোখ রাখুন পিচ্চি Panda তে</b>
+  </div>
+
+  <!-- Category Section -->
+  <div style="padding: 10px;">
+    <h3 style="margin-bottom: 10px; color: #f10075;">Shop by Category</h3>
+    <div class="category-scroll">
+      <a href="#" class="cat-btn active" data-category="all">📦 All</a>
+      <a href="#" class="cat-btn"data-category="Gaming">🎮 Gaming</a>
+      <a href="#" class="cat-btn"data-category="Airpod">🎙️ Airpod</a>
+      <a href="#" class="cat-btn"data-category="Headphone">🎧 Headphone</a>
+      <a href="#" class="cat-btn"data-category="Fan">🌀 Fan</a>
+      <a href="#" class="cat-btn"data-category="Clock">⏰ Clock</a>
+      <a href="#" class="cat-btn"data-category="Calendar">📅 Calendar </a>
+    <a href="#" class="cat-btn"data-category="Lamp">💡 Lamp Light</a>
+      <a href="#" class="cat-btn"data-category="Speaker">🔊 Speaker</a>
+      <a href="#" class="cat-btn"data-category="Tripod">📸 Tripod</a>
+      <a href="#" class="cat-btn"data-category="Mouse">🖱️ Mouse</a>
+      <a href="#" class="cat-btn"data-category="Watch">⌚ Watch</a>
+      <a href="#" class="cat-btn"data-category="Key Ring">🔑 Key Ring</a>
+      <a href="#" class="cat-btn"data-category="Trimmer">✂️ Trimmer</a>
+      <a href="#" class="cat-btn"data-category="Mobile Cover">📱 Mobile Cover</a>
+      <a href="#" class="cat-btn"data-category="Power Bank">🔋 Power Bank</a>
+    </div>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card"data-category="Airpod">
+      <img src="https://i.postimg.cc/50DRS1Hb/IMG-6519.jpg" alt="M10 Bluetooth Earbuds">
+      <h3>M10 Bluetooth Earbuds</h3>
+      <p><del>৳560</del><span class="price">৳499</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('M10 Bluetooth Earbuds' , '৳499')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+   
+        <div class="product-card"data-category="Headphone">
+      <img src="https://i.postimg.cc/QC9X5vhL/screenshot-20250420-031455-daraz-8bf5b591-f418-4e1d-8dd6-8b34943a11a9-1745097685230.jpg" alt="PG580 BT Wireless RGB Gaming Headset">
+      <h3>PG580 BT Wireless RGB Gaming Headset</h3>
+      <p><del>৳1780</del><span class="price">৳1660</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('PG580 BT Wireless RGB Gaming Headset' , '৳1660')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+    
+            <div class="product-card"data-category="Lamp">
+      <img src="https://i.postimg.cc/90BrtgDF/images-2.jpg" alt="Ring Light">
+      <h3>Ring Light</h3>
+      <p><del>৳1140</del><span class="price">৳999</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('Ring Light' , '৳999')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+    
+    
+    <div class="product-card"data-category="Gaming">
+      <img src="https://i.postimg.cc/NfDwBvhj/132025195526.png" alt="5 in 1 Gaming Keyboard and Mouse Combo-MK500">
+      <h3>5 in 1 Gaming Keyboard and Mouse Combo-MK500</h3>
+      <p><del>৳2999</del><span class="price">৳2680</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('5 in 1 Gaming Keyboard and Mouse Combo-MK500' , '৳2680')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+    
+    <div class="product-card"data-category="Airpod">
+      <img src="https://i.postimg.cc/BQkdBTK2/098dd81a08fb6ad5b8cbc95413d7ef21.png" alt="AirPods Pro 1st gen">
+      <h3>AirPods Pro (1st generation)</h3>
+      <p><del>৳1380</del><span class="price">৳1299</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('AirPods pro (1st generation)' , '৳1299')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+      
+      
+      <div class="product-card"data-category="Headphone">
+      <img src="https://i.postimg.cc/1z3v1bGw/IMG-1123.jpg" alt="P9 Pro Max Headset K1-H9007">
+      <h3>P9 Pro Max Headset K1-H9007</h3>
+      <p><del>৳1180</del><span class="price">৳920</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('P9 pro max Headset K1-H9007' , '৳920')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+      
+      <div class="product-card"data-category="Airpod">
+      <img src="https://i.postimg.cc/hG52TDxt/apple-airpods-pro-2nd-generation-500x500-6d0e95ce-0359-4429-ad2c-61725101e497-1745325927335.jpg" alt="AirPods Pro 2nd gen">
+      <h3>AirPods Pro (2nd generation)</h3>
+      <p><del>৳1899</del><span class="price">৳1680</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('Airpods pro (2nd genaration)' , '৳1680')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+      
+      <div class="product-card"data-category="Lamp">
+      <img src="https://i.postimg.cc/Y2y9kFQP/IMG-2886.jpg" alt="Mini usb Light">
+      <h3>Mini USB Light</h3>
+      <p><del>৳160</del><span class="price">৳110</span></p>
+      <div class="btn-group">
+<button onclick="openForm('Mini usb Light' , '৳110')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+      
+       <div class="product-card"data-category="Headphone">
+      <img src="https://i.postimg.cc/LXWCqbxZ/IMG-3302.jpg" alt="Hoco W35 MAX Headset L1-H9001">
+      <h3>Hoco W35 MAX Headset L1-H9001</h3>
+      <p><del>৳1780</del><span class="price">৳1699</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('Hoco W35 MAX Headset L1-H9001' , '৳1699')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+    
+     <div class="product-card"data-category="Headphone">
+      <img src="https://i.postimg.cc/GhBBVKTt/IMG-1142.jpg" alt="P47 - Wireless Bluetooth Headset">
+      <h3>P47 - Wireless Bluetooth Headset</h3>
+      <p><del>৳499</del><span class="price">৳410</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('P47 Wireless Headset' , '৳410')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+    
+      <div class="product-card"data-category="Airpod">
+      <img src="https://i.postimg.cc/TYbHNYpL/IMG-9673.jpg" alt="Airpod 4">
+      <h3>AirPod 4</h3>
+      <p><del>৳650</del><span class="price">৳580</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('Airpod 4' , '৳580')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+    
+    <div class="product-card"data-category="Headphone">
+      <img src="https://i.postimg.cc/qMCRj7WC/images-19.jpg" alt="Cats STN28 Headset L2-H9005">
+      <h3>Cats STN28 Headset L2-H9005</h3>
+      <p><del>৳1050</del><span class="price">৳980</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('Cats STN28 Headset L2-H9005' , '৳980')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+
+    <div class="product-card"data-category="Airpod">
+      <img src="https://i.postimg.cc/LX5X9Pjs/images-7.jpg" alt="Air Pro 1st">
+      <h3>Air pro 1st Gen</h3>
+      <p><del>৳860</del><span class="price">৳720</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('Air pro 1st Gen' , '৳720')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+      </div>
+    
+     <div class="product-card"data-category="Airpod">
+      <img src="https://i.postimg.cc/vm2cG41Y/download.jpg" alt="Transparent TWS Earbuds">
+      <h3>Transparent TWS Earbuds</h3>
+      <p><del>৳775</del><span class="price">৳699</span></p>
+      <div class="btn-group">
+        <button onclick="openForm('Transparent TWS Earbuds' , '৳699')">Buy</button>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </div>
+<!-- Offer Popup -->
+  <div id="popup-offer" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">×</span>
+      <h3> স্বাগতম 🛒 </h3>
+      <img src="https://i.postimg.cc/pLhpVZWm/file-000000003f3861f9bc3ecf71695d3f4f.png" alt="Offer">
+    
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href="#"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="#"><i class="fas fa-store"></i><span>Shop</span></a>
+    <a href="#"><i class="fas fa-heart"></i><span>Favorite</span></a>
+    <a href="#"><i class="fas fa-comment-dots"></i><span>Message</span></a>
+    <a href="#"><i class="fas fa-shopping-cart"></i><span>Cart</span></a>
+    <a href="#"><i class="fas fa-user"></i><span>My Account</span></a>
+  </div>
+
+  <script>
+    window.onload = function () {
+      setTimeout(function () {
+        document.getElementById('popup-offer').style.display = 'flex';
+      }, 2000);
+      setTimeout(function () {
+        document.getElementById('pandaPopup').style.display = 'none';
+      }, 1600);
+    }
+
+    function closePopup() {
+      document.getElementById('popup-offer').style.display = 'none';
+    }
+
+    function hidePanda() {
+      document.getElementById("pandaPopup").style.display = "none";
+    }
+
+    window.addEventListener('scroll', function () {
+      const popup = document.getElementById("pandaPopup");
+      popup.style.display = "block";
+      popup.style.opacity = "1";
+      popup.style.transform = "translateY(0)";
+    });
+
+    document.querySelector('.delivery-btn').addEventListener('click', function () {
+      const popup = document.getElementById('deliveryPopup');
+      popup.style.display = 'block';
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 3000);
+    });
+
+    document.querySelector('.discount-btn').addEventListener('click', function () {
+      const popup = document.getElementById('discountPopup');
+      popup.style.display = 'block';
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 3000);
+    });
+  </script>
+  <script>
+  const buttons = document.querySelectorAll('.cat-btn');
+  const products = document.querySelectorAll('.product-card');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.dataset.category;
+
+      // সক্রিয় বাটন হাইলাইট
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // ফিল্টার করা হচ্ছে
+      products.forEach(product => {
+        if (category === 'all' || product.dataset.category === category) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // ফর্ম খুলতে ফাংশন
+function openForm(productName, productPrice) {
+  document.getElementById('productName').value = productName;
+  document.getElementById('productPrice').value = productPrice;
+  document.getElementById('overlay').style.display = 'flex';
+}
+
+// ফর্ম বন্ধ করতে
+function closeForm() {
+  document.getElementById('overlay').style.display = 'none';
+}
+
+// ফর্ম সাবমিট হ্যান্ডলার
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // ডাটা নিয়ে আসা
+  const name = document.getElementById('customerName').value.trim();
+  const number = document.getElementById('customerNumber').value.trim();
+  const product = document.getElementById('productName').value;
+  const price = document.getElementById('productPrice').value;
+  const address = document.getElementById('deliveryAddress').value.trim();
+  const deliveryCharge = document.querySelector('input[name="deliveryCharge"]:checked').value;
+
+  // WhatsApp message তৈরি
+  const message = 
+    `নতুন অর্ডার এসেছে!\n\n` +
+    `নাম: ${name}\n` +
+    `মোবাইল: ${number}\n` +
+    `প্রোডাক্ট: ${product}\n` +
+    `দাম: ${price}\n` +
+    `ডেলিভারি ঠিকানা: ${address}\n` +
+    `ডেলিভারি চার্জ: ${deliveryCharge}`;
+  
+  // WhatsApp লিংক (বাংলাদেশের নম্বর +8801307686828)
+  const whatsappNumber = "8801307686828";
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+  // অর্ডার প্রসেসিং পপআপ দেখানো
+  const popup = document.getElementById('orderProcessingPopup');
+  popup.style.display = 'block';
+
+  // WhatsApp খুলবে নতুন ট্যাবে
+  window.open(whatsappURL, '_blank');
+
+  // ৩ সেকেন্ড পরে পপআপ ও ফর্ম বন্ধ
+  setTimeout(() => {
+    popup.style.display = 'none';
+    closeForm();
+    // ফর্ম রিসেট
+    document.getElementById('orderForm').reset();
+  }, 5000);
+});
+
+</script>
+
+  <!-- Footer শুরু -->
+  <footer>
+
+    <!-- Logo and Name -->
+    <div class="footer-top">
+      <img src="https://i.postimg.cc/150LzhgT/IMG-20250801-122934-982.jpg" alt="Logo" />
+      <div class="brand-name">পিচ্চি Panda</div>
+    </div>
+
+    <!-- Social Links -->
+    <div class="social-links">
+      <a href="https://www.facebook.com/Piccipanda.bd" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
+      <a href="https://www.tiktok.com/@piccipanda_" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a>
+      <a href="https://www.instagram.com/piccipanda_" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+    </div>
+
+    <!-- Footer Content -->
+    <div class="footer-container">
+
+      <div class="footer-column">
+        <h3>Shop</h3>
+        <ul>
+          <li>Offers</li>
+          <li>Top Sales</li>
+          <li>All Products</li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>About Business</h3>
+        <ul>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Privacy Policy</li>
+          <li>Refund Policy</li>
+          <li>Terms & Conditions</li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <ul>
+          <li>Pirganj, Rangpur, Dhaka</li>
+          <li>Bangladesh</li>
+          <li>📞 +8801307686828</li>
+          <li>✉️ rezoanbe@gmail.com</li>
+          <li>🌐 PicciPanda.com</li>
+        </ul>
+      </div>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      ©2025 PICCI PANDA, ALL RIGHTS RESERVED.
+      DEVELOPED BY MD REZOAN HOSSEN RUKU </div>
+      <div>
+      DEVELOPED BY MD REZOAN HOSSEN RUKU
+    </div>
+</footer>
+  <!-- Footer শেষ -->
+
+</body>
+</html>
